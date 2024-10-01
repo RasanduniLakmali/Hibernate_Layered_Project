@@ -8,5 +8,6 @@ public interface CrudDAO<T> extends SuperDAO {
      public List<T> getAll() throws SQLException;
 
      public boolean update(T dto);
-     public boolean delete(int id);
+     public boolean delete(String id);
+
 }

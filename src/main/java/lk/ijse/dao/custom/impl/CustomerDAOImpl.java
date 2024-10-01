@@ -7,17 +7,18 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
 public class CustomerDAOImpl implements CustomerDAO {
     @Override
-    public boolean save(Customer customer){
+    public boolean save(Customer customer) {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         Object isSaved = session.save(customer);
 
-        if (isSaved != null){
+        if (isSaved != null) {
             transaction.commit();
             session.close();
             return true;
@@ -26,12 +27,12 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public List<Customer> getAll(){
+    public List<Customer> getAll() {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
         Query query = session.createQuery("from Customer");
-        List<Customer> customers= query.list();
+        List<Customer> customers = query.list();
         transaction.commit();
         session.close();
         return customers;
@@ -49,19 +50,32 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public boolean delete(int id) {
+    public boolean delete(String id) {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
         Query query = session.createQuery("delete from Customer where id = ?1");
-        query.setParameter(1,id);
+        query.setParameter(1, id);
         boolean isDeleted = query.executeUpdate() > 0;
 
-        if (isDeleted){
+        if (isDeleted) {
             transaction.commit();
             session.close();
             return true;
         }
         return false;
     }
+
+    @Override
+    public Customer search(String customerId) throws SQLException {
+
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        Query query = session.createQuery("from Customer where id =?1");
+        query.setParameter(1, customerId);
+        Customer customer = (Customer) query.uniqueResult();
+        transaction.commit();
+        return customer;
+    }
+
 }

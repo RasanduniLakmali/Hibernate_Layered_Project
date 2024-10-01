@@ -1,7 +1,7 @@
 package lk.ijse.dto;
 
 public class ItemDTO {
-    int itemCode;
+    String itemCode;
     String description;
     double unitPrice;
     int qty;
@@ -9,18 +9,18 @@ public class ItemDTO {
     public ItemDTO() {
     }
 
-    public ItemDTO(int itemCode, String description, double unitPrice, int qty) {
+    public ItemDTO(String itemCode, String description, double unitPrice, int qty) {
         this.itemCode = itemCode;
         this.description = description;
         this.unitPrice = unitPrice;
         this.qty = qty;
     }
 
-    public int getItemCode() {
+    public String getItemCode() {
         return itemCode;
     }
 
-    public void setItemCode(int itemCode) {
+    public void setItemCode(String itemCode) {
         this.itemCode = itemCode;
     }
 

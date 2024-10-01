@@ -35,7 +35,13 @@ public class ItemBOImpl implements ItemBO {
     }
 
     @Override
-    public boolean deleteItem(int itemCode) {
+    public boolean deleteItem(String itemCode) {
         return itemDAO.delete(itemCode);
+    }
+
+    @Override
+    public  ItemDTO searchItem(String itemCode) throws SQLException {
+        Item item = itemDAO.search(itemCode);
+        return new ItemDTO(item.getItemCode(),item.getDescription(),item.getUnitPrice(),item.getQty());
     }
 }

@@ -10,25 +10,25 @@ import java.util.List;
 @Entity
 public class Customer {
     @Id
-    private int id;
+    private String id;
     private String name;
     private String address;
     private String tel;
 
-//    @OneToMany(mappedBy = "customer")
-//    private List<Orders> ordersList = new ArrayList<>();
+    @OneToMany(mappedBy = "customer")
+    private List<Orders> ordersList;
 
     public Customer() {
     }
 
-    public Customer(int id, String name, String address, String tel) {
+    public Customer(String id, String name, String address, String tel) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.tel = tel;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -44,7 +44,7 @@ public class Customer {
         return tel;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -98,7 +98,7 @@ public class ItemFormController {
     }
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
-       int iCode = Integer.parseInt(txtId.getText());
+       String iCode = txtId.getText();
 
         try {
             boolean isDeleted = itemBO.deleteItem(iCode);
@@ -113,7 +113,7 @@ public class ItemFormController {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-       int iCode = Integer.parseInt(txtId.getText());
+       String iCode = txtId.getText();
        String description = txtDescription.getText();
        double unitPrice = Double.parseDouble(txtUnitPrice.getText());
        int qty = Integer.parseInt(txtQty.getText());
@@ -136,7 +136,7 @@ public class ItemFormController {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
-        int iCode = Integer.parseInt(txtId.getText());
+        String iCode = txtId.getText();
         String description = txtDescription.getText();
         double unitPrice = Double.parseDouble(txtUnitPrice.getText());
         int qty = Integer.parseInt(txtQty.getText());

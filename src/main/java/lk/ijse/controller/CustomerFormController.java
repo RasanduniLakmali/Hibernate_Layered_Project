@@ -101,7 +101,7 @@ public class CustomerFormController {
     }
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
-        int customerId = Integer.parseInt(txtId.getText());
+        String customerId = txtId.getText();
 
         try {
             boolean isDeleted = customerBO.deleteCustomer(customerId);
@@ -116,7 +116,7 @@ public class CustomerFormController {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-        int customerId= Integer.parseInt(txtId.getText());
+        String customerId= txtId.getText();
         String name = txtName.getText();
         String address = txtAddress.getText();
         String telNo = txtTel.getText();
@@ -140,7 +140,7 @@ public class CustomerFormController {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
-        int customerId= Integer.parseInt(txtId.getText());
+        String customerId= txtId.getText();
         String name = txtName.getText();
         String address = txtAddress.getText();
         String telNo = txtTel.getText();

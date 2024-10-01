@@ -1,19 +1,23 @@
 package lk.ijse.view.tdm;
 
-public class ItemTm {
-    String itemCode;
-    String description;
-    double unitPrice;
-    int qty;
+import java.math.BigDecimal;
 
-    public ItemTm() {
+public class OrderDetailsTm {
+    private String itemCode;
+    private String description;
+    private int qty;
+    private double unitPrice;
+    private double total;
+
+    public OrderDetailsTm() {
     }
 
-    public ItemTm(String itemCode, String description, double unitPrice, int qty) {
+    public OrderDetailsTm(String itemCode, String description, int qty, double unitPrice, double total) {
         this.itemCode = itemCode;
         this.description = description;
-        this.unitPrice = unitPrice;
         this.qty = qty;
+        this.unitPrice = unitPrice;
+        this.total = total;
     }
 
     public String getItemCode() {
@@ -32,14 +36,6 @@ public class ItemTm {
         this.description = description;
     }
 
-    public double getUnitPrice() {
-        return unitPrice;
-    }
-
-    public void setUnitPrice(double unitPrice) {
-        this.unitPrice = unitPrice;
-    }
-
     public int getQty() {
         return qty;
     }
@@ -48,13 +44,30 @@ public class ItemTm {
         this.qty = qty;
     }
 
+    public double getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(double unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
     @Override
     public String toString() {
-        return "Item{" +
-                "itemCode=" + itemCode +
+        return "OrderDetailsTm{" +
+                "itemCode='" + itemCode + '\'' +
                 ", description='" + description + '\'' +
-                ", unitPrice=" + unitPrice +
                 ", qty=" + qty +
+                ", unitPrice=" + unitPrice +
+                ", total=" + total +
                 '}';
     }
 }

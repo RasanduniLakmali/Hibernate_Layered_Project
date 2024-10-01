@@ -10,4 +10,5 @@ import java.util.List;
 public interface CustomerDAO extends CrudDAO<Customer> {
     public boolean save(Customer customer) throws SQLException;
     public List<Customer> getAll();
+    public  Customer search(String customerId) throws SQLException;
 }
